@@ -1,0 +1,177 @@
+/*! Puffanee Dialoger - UI Helper for JavaScript working with jQuery | (c) Puffanee | github.com/puffanee/Dialoger/license */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --dialoger-redalert-color: #f55353;
+  --dialoger-greenalert-color: #47ce8a;
+  --dialoger-bluealert-color: #29a0f0;
+  --dialoger-orangealert-color: #eb8440;
+  --dialoger-blackalert-color: #161616;
+}
+
+.Dialoger__CustomAlerts {
+  display: flex;
+  position: fixed;
+  z-index: 9999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Dialoger__CustomAlerts.RightTop {
+  top: 10px;
+  right: 10px;
+  transform: translate(0, 0);
+}
+
+.Dialoger__CustomAlerts.RightBottom {
+  bottom: 10px;
+  right: 10px;
+  transform: translate(0, 0);
+}
+
+.Dialoger__CustomAlerts.LeftTop {
+  top: 10px;
+  left: 10px;
+  transform: translate(0, 0);
+}
+
+.Dialoger__CustomAlerts.LeftBottom {
+  bottom: 10px;
+  left: 10px;
+  transform: translate(0, 0);
+}
+
+.Dialoger__CustomAlerts.TopCenter {
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.Dialoger__CustomAlerts.BottomCenter {
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.Dialoger__CustomAlerts .Alert__List {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Dialoger__CustomAlerts .Dialoger__CustomAlert {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--dialoger-blackalert-color);
+  padding: 17px 20px;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  align-items: center;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  width: 100%;
+}
+
+.Dialoger__CustomAlerts .Dialoger__CustomAlert .Alert__Text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.Dialoger__CustomAlerts .Dialoger__CustomAlert .Alert__Icon {
+  width: 23px;
+  height: 23px;
+  margin-right: 10px;
+}
+
+.Dialoger__CustomAlerts .Dialoger__CustomAlert .Alert__Icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.Dialoger__CustomAlerts.TopCenter .Dialoger__CustomAlert,
+.Dialoger__CustomAlerts.LeftTop .Dialoger__CustomAlert,
+.Dialoger__CustomAlerts.RightTop .Dialoger__CustomAlert {
+  animation-name: slide-in-top, slide-out-top;
+  animation-delay: 0s, 8s;
+}
+
+.Dialoger__CustomAlerts.BottomCenter .Dialoger__CustomAlert,
+.Dialoger__CustomAlerts.LeftBottom .Dialoger__CustomAlert,
+.Dialoger__CustomAlerts.RightBottom .Dialoger__CustomAlert {
+  animation-name: slide-in-bottom, slide-out-bottom;
+  animation-delay: 0s, 8s;
+}
+
+.Dialoger__CustomAlerts .Dialoger__CustomAlert.Danger {
+  background-color: var(--dialoger-redalert-color);
+  color: #ffffff;
+}
+
+.Dialoger__CustomAlerts .Dialoger__CustomAlert.Success {
+  background-color: var(--dialoger-greenalert-color);
+  color: #ffffff;
+}
+
+.Dialoger__CustomAlerts .Dialoger__CustomAlert.Information {
+  background-color: var(--dialoger-bluealert-color);
+  color: #ffffff;
+}
+
+.Dialoger__CustomAlerts .Dialoger__CustomAlert.Warning {
+  background-color: var(--dialoger-orangealert-color);
+  color: #ffffff;
+}
+
+.Dialoger__CustomAlerts .Dialoger__CustomAlert.Default {
+  background-color: var(--dialoger-blackalert-color);
+  color: #ffffff;
+}
+
+@keyframes slide-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out-top {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes slide-out-bottom {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
