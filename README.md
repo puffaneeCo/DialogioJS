@@ -1,2 +1,2 @@
 # Dialoger
-Puffanee Dialoger - UI Helper for JavaScript working with jQuery
+Puffanee Dialoger - A minimal JS/CSS library for custom alerts, confirmations, modals and toasts.

@@ -1,0 +1,34 @@
+{
+  "name": "dialoger",
+  "version": "1.0.0",
+  "description": "A minimal JS/CSS library for custom alerts, confirmations, modals and toasts.",
+  "keywords": [
+    "toast",
+    "modal",
+    "confirmation",
+    "alert",
+    "custom",
+    "dialog"
+  ],
+  "homepage": "https://github.com/puffanee/Dialoger",
+  "bugs": {
+    "url": "https://github.com/puffanee/Dialoger/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puffanee/Dialoger.git"
+  },
+  "license": "MIT",
+  "author": "Puffanee",
+  "scripts": {
+    "build:js": "concat -o dist/dialoger.js src/toast.js src/modal.js src/confirm.js && uglifyjs dist/dialoger.js -o dist/dialoger.min.js",
+    "build:css": "powershell -Command Copy-Item src/dialoger.css dist\\ && cleancss -o dist/dialoger.min.css src/dialoger.css",
+    "build": "npm run build:js && npm run build:css"
+  },
+  "filename": "dialoger.js",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "concat-cli": "^4.0.0",
+    "uglify-js": "^3.19.3"
+  }
+}

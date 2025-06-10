@@ -1,4 +1,4 @@
-/*! Puffanee Dialoger - UI Helper for JavaScript working with jQuery | (c) Puffanee | github.com/puffanee/Dialoger/license */
+/*! Puffanee Dialoger - A minimal JS/CSS library for custom alerts, confirmations, modals and toasts. | (c) Puffanee | github.com/puffanee/Dialoger/license */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
@@ -9,7 +9,7 @@
   --dialoger-blackalert-color: #161616;
 }
 
-.Dialoger__CustomAlerts {
+.Dialoger__Toasts {
   display: flex;
   position: fixed;
   z-index: 9999;
@@ -18,49 +18,49 @@
   justify-content: center;
 }
 
-.Dialoger__CustomAlerts.RightTop {
+.Dialoger__Toasts.RightTop {
   top: 10px;
-  right: 10px;
+  right: 50px;
   transform: translate(0, 0);
 }
 
-.Dialoger__CustomAlerts.RightBottom {
+.Dialoger__Toasts.RightBottom {
   bottom: 10px;
-  right: 10px;
+  right: 50px;
   transform: translate(0, 0);
 }
 
-.Dialoger__CustomAlerts.LeftTop {
+.Dialoger__Toasts.LeftTop {
   top: 10px;
-  left: 10px;
+  left: 50px;
   transform: translate(0, 0);
 }
 
-.Dialoger__CustomAlerts.LeftBottom {
+.Dialoger__Toasts.LeftBottom {
   bottom: 10px;
-  left: 10px;
+  left: 50px;
   transform: translate(0, 0);
 }
 
-.Dialoger__CustomAlerts.TopCenter {
+.Dialoger__Toasts.TopCenter {
   top: 10px;
   left: 50%;
   transform: translate(-50%, 0);
 }
 
-.Dialoger__CustomAlerts.BottomCenter {
+.Dialoger__Toasts.BottomCenter {
   bottom: 10px;
   left: 50%;
   transform: translate(-50%, 0);
 }
 
-.Dialoger__CustomAlerts .Alert__List {
+.Dialoger__Toasts .AllToasts {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.Dialoger__CustomAlerts .Dialoger__CustomAlert {
+.Dialoger__Toasts .Dialoger__Toast {
   display: flex;
   flex-direction: row;
   background-color: var(--dialoger-blackalert-color);
@@ -76,58 +76,58 @@
   width: 100%;
 }
 
-.Dialoger__CustomAlerts .Dialoger__CustomAlert .Alert__Text {
+.Dialoger__Toasts .Dialoger__Toast .ToastMessage {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 1rem;
 }
 
-.Dialoger__CustomAlerts .Dialoger__CustomAlert .Alert__Icon {
+.Dialoger__Toasts .Dialoger__Toast .ToastIcon {
   width: 23px;
   height: 23px;
   margin-right: 10px;
 }
 
-.Dialoger__CustomAlerts .Dialoger__CustomAlert .Alert__Icon svg {
+.Dialoger__Toasts .Dialoger__Toast .ToastIcon svg {
   width: 100%;
   height: 100%;
 }
 
-.Dialoger__CustomAlerts.TopCenter .Dialoger__CustomAlert,
-.Dialoger__CustomAlerts.LeftTop .Dialoger__CustomAlert,
-.Dialoger__CustomAlerts.RightTop .Dialoger__CustomAlert {
+.Dialoger__Toasts.TopCenter .Dialoger__Toast,
+.Dialoger__Toasts.LeftTop .Dialoger__Toast,
+.Dialoger__Toasts.RightTop .Dialoger__Toast {
   animation-name: slide-in-top, slide-out-top;
   animation-delay: 0s, 8s;
 }
 
-.Dialoger__CustomAlerts.BottomCenter .Dialoger__CustomAlert,
-.Dialoger__CustomAlerts.LeftBottom .Dialoger__CustomAlert,
-.Dialoger__CustomAlerts.RightBottom .Dialoger__CustomAlert {
+.Dialoger__Toasts.BottomCenter .Dialoger__Toast,
+.Dialoger__Toasts.LeftBottom .Dialoger__Toast,
+.Dialoger__Toasts.RightBottom .Dialoger__Toast {
   animation-name: slide-in-bottom, slide-out-bottom;
   animation-delay: 0s, 8s;
 }
 
-.Dialoger__CustomAlerts .Dialoger__CustomAlert.Danger {
+.Dialoger__Toasts .Dialoger__Toast.Danger {
   background-color: var(--dialoger-redalert-color);
   color: #ffffff;
 }
 
-.Dialoger__CustomAlerts .Dialoger__CustomAlert.Success {
+.Dialoger__Toasts .Dialoger__Toast.Success {
   background-color: var(--dialoger-greenalert-color);
   color: #ffffff;
 }
 
-.Dialoger__CustomAlerts .Dialoger__CustomAlert.Information {
+.Dialoger__Toasts .Dialoger__Toast.Information {
   background-color: var(--dialoger-bluealert-color);
   color: #ffffff;
 }
 
-.Dialoger__CustomAlerts .Dialoger__CustomAlert.Warning {
+.Dialoger__Toasts .Dialoger__Toast.Warning {
   background-color: var(--dialoger-orangealert-color);
   color: #ffffff;
 }
 
-.Dialoger__CustomAlerts .Dialoger__CustomAlert.Default {
+.Dialoger__Toasts .Dialoger__Toast.Default {
   background-color: var(--dialoger-blackalert-color);
   color: #ffffff;
 }
@@ -174,4 +174,8 @@
     opacity: 0;
     transform: translateY(30px);
   }
+}
+
+@media (max-width: 768px) {
+  
 }
