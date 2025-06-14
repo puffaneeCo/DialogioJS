@@ -1,14 +1,16 @@
 {
   "name": "dialoger",
-  "version": "1.0.0",
-  "description": "A minimal JS/CSS library for custom alerts, confirmations, modals and toasts.",
+  "version": "2.0.0",
+  "description": "A simple, responsive, modern JavaScript library with jQuery support for toast notifications and custom confirmation alerts.",
   "keywords": [
-    "toast",
-    "modal",
-    "confirmation",
-    "alert",
+    "javascript",
+    "jquery",
+    "modern",
+    "simple",
     "custom",
-    "dialog"
+    "javascript-library",
+    "toast-notifications",
+    "custom-confirm"
   ],
   "homepage": "https://github.com/puffanee/Dialoger",
   "bugs": {
@@ -18,17 +20,35 @@
     "type": "git",
     "url": "git+https://github.com/puffanee/Dialoger.git"
   },
-  "license": "MIT",
-  "author": "Puffanee",
+  "filename": "dialoger.js",
+  "main": "dialoger.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "dependencies": {
+    "jquery": "^3.6.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "scripts": {
-    "build:js": "concat -o dist/dialoger.js src/toast.js src/modal.js src/confirm.js && uglifyjs dist/dialoger.js -o dist/dialoger.min.js",
+    "build:js": "concat -o dist/dialoger.js src/dialoger.js && uglifyjs dist/dialoger.js -o dist/dialoger.min.js",
     "build:css": "powershell -Command Copy-Item src/dialoger.css dist\\ && cleancss -o dist/dialoger.min.css src/dialoger.css",
     "build": "npm run build:js && npm run build:css"
   },
-  "filename": "dialoger.js",
+  "license": "MIT",
+  "author": "Ahmet Mert Kaymaz @Puffanee",
   "devDependencies": {
     "clean-css-cli": "^5.6.3",
     "concat-cli": "^4.0.0",
     "uglify-js": "^3.19.3"
-  }
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/dialoger.js",
+      "require": "./dist/dialoger.cjs"
+    }
+  },
+  "private": true
 }

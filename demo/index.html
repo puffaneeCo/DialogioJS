@@ -4,28 +4,18 @@
 <head>
     <meta charset="UTF-8" />
     <title>Dialoger Demo</title>
-    <link rel="stylesheet" href="/dist/dialoger.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/dialoger.css" />
 </head>
 
 <body>
-    <button id="toastBtn">Test Toasts</button>
-    <button id="modalBtn">Show Test Modal</button>
-    <button id="confirmBtn">Test Confirm Dialog</button>
+    <div style="display: flex;width: 100%;justify-content: center;align-items: center;min-height: 100vh;">
+        <h1>Dialoger Demo</h1>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/dist/dialoger.js"></script>
-    <script>
-        $.dialoger.toast.setLocation(3);
-        $('#toastBtn').click(() => $.dialoger.toast.push(2, "Başarılı Toast Mesajı!"));
-        /*$('#modalBtn').click(() => alert("Modal açılacak, geliştirilmesi lazım :)"));
-        $('#confirmBtn').click(() => {
-            if (confirm("Onaylıyor musun?")) {
-                $.dlgalert(2, "Onaylandı!");
-            } else {
-                $.dlgalert(1, "İptal edildi!");
-            }
-        });*/
-    </script>
+    <script src="/src/dialoger.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
