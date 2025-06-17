@@ -1,7 +1,7 @@
 {
-  "name": "dialoger",
-  "version": "2.0.0",
-  "description": "A simple, responsive, modern JavaScript library with jQuery support for toast notifications and custom confirmation alerts.",
+  "name": "dialogiojs",
+  "version": "2.2.1",
+  "description": "A simple, responsive, modern JavaScript library with jQuery support for toast notifications, custom confirmation alerts and custom input modals.",
   "keywords": [
     "javascript",
     "jquery",
@@ -12,43 +12,43 @@
     "toast-notifications",
     "custom-confirm"
   ],
-  "homepage": "https://github.com/puffanee/Dialoger",
+  "homepage": "https://github.com/puffanee/DialogioJS",
   "bugs": {
-    "url": "https://github.com/puffanee/Dialoger/issues"
+    "url": "https://github.com/puffanee/DialogioJS/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/puffanee/Dialoger.git"
+    "url": "git+https://github.com/puffanee/DialogioJS.git"
   },
-  "filename": "dialoger.js",
-  "main": "dialoger.js",
+  "license": "MIT",
+  "author": "Ahmet Mert Kaymaz @puffanee",
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "import": "./dist/dialogio.js",
+      "require": "./dist/dialogio.cjs"
+    }
+  },
+  "main": "dialogio.js",
   "files": [
     "dist",
     "src"
   ],
+  "scripts": {
+    "build:js": "powershell -Command \"Get-ChildItem src\\*.js | ForEach-Object { uglifyjs $_.FullName -o \\\"dist\\\\$($_.BaseName).min.js\\\" }\"",
+    "build:css": "cleancss -o dist/dialogio.min.css src/dialogio.css",
+    "build": "npm run build:js && npm run build:css"
+  },
   "dependencies": {
     "jquery": "^3.6.0"
   },
-  "engines": {
-    "node": ">=10.0.0"
-  },
-  "scripts": {
-    "build:js": "concat -o dist/dialoger.js src/dialoger.js && uglifyjs dist/dialoger.js -o dist/dialoger.min.js",
-    "build:css": "powershell -Command Copy-Item src/dialoger.css dist\\ && cleancss -o dist/dialoger.min.css src/dialoger.css",
-    "build": "npm run build:js && npm run build:css"
-  },
-  "license": "MIT",
-  "author": "Ahmet Mert Kaymaz @Puffanee",
   "devDependencies": {
     "clean-css-cli": "^5.6.3",
     "concat-cli": "^4.0.0",
     "uglify-js": "^3.19.3"
   },
-  "exports": {
-    ".": {
-      "import": "./dist/dialoger.js",
-      "require": "./dist/dialoger.cjs"
-    }
+  "engines": {
+    "node": ">=10.0.0"
   },
-  "private": true
+  "filename": "dialogio.js"
 }

@@ -1,8 +1,6 @@
-/*! Puffanee Dialoger | (c) Puffanee | https://github.com/puffanee/Dialoger */
+/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffanee/DialogioJS */
 
-const uel = navigator.language || navigator.userLanguage;
-
-const dialoger_lang = {
+const dialogio_lang = {
   "tr-TR": {
     yes: "evet",
     no: "hayır",
@@ -15,6 +13,7 @@ const dialoger_lang = {
     back: "geri dön",
     delete: "sil",
     create: "oluştur",
+    default_placeholder: "Özel giriş...",
   },
   "en-US": {
     yes: "yes",
@@ -28,6 +27,7 @@ const dialoger_lang = {
     back: "back",
     delete: "delete",
     create: "create",
+    default_placeholder: "Custom input...",
   },
   "en-UK": {
     yes: "yes",
@@ -41,6 +41,7 @@ const dialoger_lang = {
     back: "back",
     delete: "delete",
     create: "create",
+    default_placeholder: "Custom input...",
   },
   "de-DE": {
     yes: "ja",
@@ -54,6 +55,7 @@ const dialoger_lang = {
     back: "zurück",
     delete: "löschen",
     create: "erstellen",
+    default_placeholder: "Benutzerdefinierte Eingabe...",
   },
   "fr-FR": {
     yes: "oui",
@@ -67,43 +69,50 @@ const dialoger_lang = {
     back: "retour",
     delete: "supprimer",
     create: "créer",
+    default_placeholder: "Entrée personnalisée...",
   },
 };
 
-const DialogerButtons = {
+const defuel = navigator.language || navigator.userLanguage;
+var uel = "en-US";
+if (dialogio_lang[defuel] !== undefined) {
+  uel = dialogio_lang[defuel];
+}
+
+const DialogioButtons = {
   YesNo: [
-    { t: dialoger_lang[uel].no, ty: "Neg", i: "false" },
-    { t: dialoger_lang[uel].yes, ty: "Pos", i: "true" },
+    { t: uel.no, ty: "Neg", i: "false" },
+    { t: uel.yes, ty: "Pos", i: "true" },
   ],
   ConfirmDecline: [
-    { t: dialoger_lang[uel].decline, ty: "Neg", i: "false" },
-    { t: dialoger_lang[uel].confirm, ty: "Pos", i: "true" },
+    { t: uel.decline, ty: "Neg", i: "false" },
+    { t: uel.confirm, ty: "Pos", i: "true" },
   ],
   OkCancel: [
-    { t: dialoger_lang[uel].cancel, ty: "Neg", i: "false" },
-    { t: dialoger_lang[uel].ok, ty: "Pos", i: "true" },
+    { t: uel.cancel, ty: "Neg", i: "false" },
+    { t: uel.ok, ty: "Pos", i: "true" },
   ],
   RetryCancel: [
-    { t: dialoger_lang[uel].cancel, ty: "Neg", i: "false" },
-    { t: dialoger_lang[uel].retry, ty: "Pos", i: "retry" },
+    { t: uel.cancel, ty: "Neg", i: "false" },
+    { t: uel.retry, ty: "Pos", i: "retry" },
   ],
   ContinueBack: [
-    { t: dialoger_lang[uel].back, ty: "Neg", i: "back" },
-    { t: dialoger_lang[uel].continue, ty: "Pos", i: "continue" },
+    { t: uel.back, ty: "Neg", i: "back" },
+    { t: uel.continue, ty: "Pos", i: "continue" },
   ],
   DeleteCancel: [
-    { t: dialoger_lang[uel].cancel, ty: "Neg", i: "false" },
-    { t: dialoger_lang[uel].delete, ty: "Pos", i: "delete" },
+    { t: uel.cancel, ty: "Neg", i: "false" },
+    { t: uel.delete, ty: "Pos", i: "delete" },
   ],
-  Ok: [{ t: dialoger_lang[uel].ok, ty: "Pos", i: "true" }],
+  Ok: [{ t: uel.ok, ty: "Pos", i: "true" }],
   CreateCancel: [
-    { t: dialoger_lang[uel].cancel, ty: "Neg", i: "false" },
-    { t: dialoger_lang[uel].create, ty: "Pos", i: "create" },
+    { t: uel.cancel, ty: "Neg", i: "false" },
+    { t: uel.create, ty: "Pos", i: "create" },
   ],
 };
-window.DialogerButtons = DialogerButtons;
+window.DialogioButtons = DialogioButtons;
 
-class Dialoger {
+class Dialogio {
   static _Config = {
     ToastIcons: {
       0: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5835 7.41667C4.5835 3.32056 7.90405 0 12.0002 0C16.0963 0 19.4168 3.32056 19.4168 7.41667V8.33334C19.4168 10.5339 19.7156 12.4847 20.171 13.8507C20.4004 14.539 20.6515 15.0238 20.8818 15.316C21.0523 15.5324 21.1541 15.5761 21.1774 15.5834C21.7248 15.5891 22.1668 16.0346 22.1668 16.5833V16.7917C22.1668 17.344 21.7191 17.7917 21.1668 17.7917H2.8335C2.28121 17.7917 1.8335 17.344 1.8335 16.7917V16.5833C1.8335 16.0346 2.27551 15.5891 2.82292 15.5834C2.84626 15.5761 2.948 15.5324 3.11851 15.316C3.34881 15.0238 3.59994 14.539 3.82936 13.8507C4.2847 12.4847 4.5835 10.5339 4.5835 8.33334V7.41667ZM2.81774 15.5847C2.81773 15.5846 2.81863 15.5844 2.82044 15.5841L2.81886 15.5845C2.81812 15.5847 2.81774 15.5847 2.81774 15.5847Z" fill="#ffffff"></path> <path d="M9.25013 19.5C8.87258 19.5 8.52722 19.7126 8.35723 20.0497C8.18723 20.3869 8.2216 20.791 8.44606 21.0945C9.27818 22.2199 10.5352 23 12.0001 23C13.465 23 14.7221 22.2199 15.5542 21.0945C15.7787 20.791 15.813 20.3869 15.643 20.0497C15.473 19.7126 15.1277 19.5 14.7501 19.5H9.25013Z" fill="#ffffff"></path> </g></svg>`,
@@ -172,9 +181,9 @@ class Dialoger {
   };
 }
 
-class DialogerToast extends Dialoger {
+class DialogioToast extends Dialogio {
   static #internalCall = false;
-  static #RemoveMs = DialogerToast.ToastDefaultRemoveMs; // Toasts will be removed after this time in milliseconds
+  static #RemoveMs = DialogioToast.ToastDefaultRemoveMs; // Toasts will be removed after this time in milliseconds
   static get RemoveTime() {
     return this.#RemoveMs;
   }
@@ -184,96 +193,88 @@ class DialogerToast extends Dialoger {
     }
   }
 
-  /**
-   * @class Toast
-   * @classdesc DialogerJS Toasts class.
-   * @param {number} location - The location number of the toast on the screen. (LINK)
-   * @param {number} removeTime - Toasts will be removed after this time in milliseconds. Default is 8000ms.
-   * @returns {Toast}
-   * @description Creates a new Toast instance.
-   */
   constructor(location = 0, removeTime = 8000) {
     super();
 
     if (typeof jQuery === "undefined") {
-      console.error("[DialogerJS] jQuery is required for DialogerJS Confirm.");
+      console.error("[DialogioJS] jQuery is required for DialogioJS Confirm.");
       return;
     }
 
     if (typeof removeTime === "number" && removeTime > 0) {
-      DialogerToast.#setRemoveTime(removeTime);
+      DialogioToast.#setRemoveTime(removeTime);
     } else {
-      console.warn("[DialogerJS] Invalid remove time. Using default.");
+      console.warn("[DialogioJS] Invalid remove time. Using default.");
     }
 
-    if ($("#dialogerJStoasts").length === 0) {
-      DialogerToast.#internalCall = true;
-      DialogerToast.#SetLocation(location || 0);
-      DialogerToast.#internalCall = false;
+    if ($("#dialogioJStoasts").length === 0) {
+      DialogioToast.#internalCall = true;
+      DialogioToast.#SetLocation(location || 0);
+      DialogioToast.#internalCall = false;
     }
   }
 
   static #CreateToast(style = 0, message = "", redirect = "", setIcon = true) {
-    if (!new.target && !DialogerToast.#internalCall) {
-      console.warn("[DialogerJS] CreateToast cannot be used externally.");
+    if (!new.target && !DialogioToast.#internalCall) {
+      console.warn("[DialogioJS] CreateToast cannot be used externally.");
       return;
     }
 
     if (
       typeof style !== "number" ||
-      Dialoger._Config.ToastStyles[style] === undefined
+      Dialogio._Config.ToastStyles[style] === undefined
     ) {
       style = 0;
       console.warn(
-        `[DialogerJS] Invalid style: ${style}. Using default style.`
+        `[DialogioJS] Invalid style: ${style}. Using default style.`
       );
     }
 
     if (!message || typeof message !== "string" || message.trim() === "") {
-      console.error("[DialogerJS] Toast message must be a non-empty string.");
+      console.error("[DialogioJS] Toast message must be a non-empty string.");
       return;
     }
 
     if (typeof setIcon !== "boolean") {
-      console.error("[DialogerJS] setIcon must be a boolean value.");
+      console.error("[DialogioJS] setIcon must be a boolean value.");
       return;
     }
 
     document
-      .getElementById("dialogerJStoasts")
+      .getElementById("dialogioJStoasts")
       .style.setProperty(
-        "--dialoger-notification-ms",
-        `${DialogerToast.RemoveTime - 350}ms`
+        "--dialogio-notification-ms",
+        `${DialogioToast.RemoveTime - 350}ms`
       );
 
-    const id = `dialogerJStoast-${Date.now()}-${Math.random()
+    const id = `dialogioJStoast-${Date.now()}-${Math.random()
       .toString(36)
       .slice(2, 8)}`;
-    const toastStyle = Dialoger._Config.ToastStyles[style];
+    const toastStyle = Dialogio._Config.ToastStyles[style];
     const iconHtml = setIcon
-      ? `<div class="ToastIcon">${Dialoger._Config.ToastIcons[style]}</div>`
+      ? `<div class="ToastIcon">${Dialogio._Config.ToastIcons[style]}</div>`
       : "";
 
     const encodedMessage = $("<div>").text(message).html();
 
     const toastHtml = `
-      <div class="Dialoger__Toast ${toastStyle}" id="${id}">
+      <div class="Dialogio__Toast ${toastStyle}" id="${id}">
         ${iconHtml}
         <div class="ToastMessage">${encodedMessage}</div>
       </div>
     `;
 
-    $("#dialogerJStoasts").css("display", "flex").append(toastHtml);
+    $("#dialogioJStoasts").css("display", "flex").append(toastHtml);
 
     const toast = $(`#${id}`);
 
     setTimeout(() => {
       toast.remove();
       if (typeof onClose === "function") onClose();
-    }, DialogerToast.RemoveTime);
+    }, DialogioToast.RemoveTime);
 
     toast.on("click", function () {
-      if (redirect?.trim() && Dialoger._isValidURL(redirect)) {
+      if (redirect?.trim() && Dialogio._isValidURL(redirect)) {
         window.location.href = redirect;
       } else {
         $(this).remove();
@@ -288,30 +289,30 @@ class DialogerToast extends Dialoger {
    * @description Sets the location of the toast notifications on the screen.
    */
   static #SetLocation(location = 0) {
-    if (!new.target && !DialogerToast.#internalCall) {
-      console.warn("[DialogerJS] SetLocation cannot be used externally.");
+    if (!new.target && !DialogioToast.#internalCall) {
+      console.warn("[DialogioJS] SetLocation cannot be used externally.");
       return;
     }
 
     if (
       typeof location !== "number" ||
-      !Dialoger._Config.ToastLocations[location]
+      !Dialogio._Config.ToastLocations[location]
     ) {
       console.warn(
-        `[DialogerJS] Invalid location: ${location}. Using default.`
+        `[DialogioJS] Invalid location: ${location}. Using default.`
       );
       location = 0;
     }
 
     location =
-      Dialoger._Config.ToastLocations[location] ||
-      Dialoger._Config.ToastLocations[0];
+      Dialogio._Config.ToastLocations[location] ||
+      Dialogio._Config.ToastLocations[0];
 
-    $("#dialogerJStoasts").remove();
+    $("#dialogioJStoasts").remove();
 
     const newToast = $("<div>", {
-      class: `Dialoger__Toasts ${location}`,
-      id: "dialogerJStoasts",
+      class: `Dialogio__Toasts ${location}`,
+      id: "dialogioJStoasts",
     });
 
     $("body").prepend(newToast);
@@ -328,9 +329,9 @@ class DialogerToast extends Dialoger {
    * Toast.Notif("This is a notification toast message.", "https://github.com/puffanee", true);
    */
   Notif(message = "", redirect = "", setIcon = true) {
-    DialogerToast.#internalCall = true;
-    DialogerToast.#CreateToast(0, message, redirect, setIcon);
-    DialogerToast.#internalCall = false;
+    DialogioToast.#internalCall = true;
+    DialogioToast.#CreateToast(0, message, redirect, setIcon);
+    DialogioToast.#internalCall = false;
   }
 
   /**
@@ -344,9 +345,9 @@ class DialogerToast extends Dialoger {
    * Toast.Danger("This is a danger toast message.", "https://github.com/puffanee", true);
    */
   Danger(message = "", redirect = "", setIcon = true) {
-    DialogerToast.#internalCall = true;
-    DialogerToast.#CreateToast(1, message, redirect, setIcon);
-    DialogerToast.#internalCall = false;
+    DialogioToast.#internalCall = true;
+    DialogioToast.#CreateToast(1, message, redirect, setIcon);
+    DialogioToast.#internalCall = false;
   }
 
   /**
@@ -360,9 +361,9 @@ class DialogerToast extends Dialoger {
    * Toast.Success("This is a success toast message.", "https://github.com/puffanee", true);
    */
   Success(message = "", redirect = "", setIcon = true) {
-    DialogerToast.#internalCall = true;
-    DialogerToast.#CreateToast(2, message, redirect, setIcon);
-    DialogerToast.#internalCall = false;
+    DialogioToast.#internalCall = true;
+    DialogioToast.#CreateToast(2, message, redirect, setIcon);
+    DialogioToast.#internalCall = false;
   }
 
   /**
@@ -376,9 +377,9 @@ class DialogerToast extends Dialoger {
    * Toast.Warn("This is a warning toast message.", "https://github.com/puffanee", true);
    */
   Warn(message = "", redirect = "", setIcon = true) {
-    DialogerToast.#internalCall = true;
-    DialogerToast.#CreateToast(3, message, redirect, setIcon);
-    DialogerToast.#internalCall = false;
+    DialogioToast.#internalCall = true;
+    DialogioToast.#CreateToast(3, message, redirect, setIcon);
+    DialogioToast.#internalCall = false;
   }
 
   /**
@@ -392,39 +393,39 @@ class DialogerToast extends Dialoger {
    * Toast.Info("This is a information toast message.", "https://github.com/puffanee", true);
    */
   Info(message = "", redirect = "", setIcon = true) {
-    DialogerToast.#internalCall = true;
-    DialogerToast.#CreateToast(4, message, redirect, setIcon);
-    DialogerToast.#internalCall = false;
+    DialogioToast.#internalCall = true;
+    DialogioToast.#CreateToast(4, message, redirect, setIcon);
+    DialogioToast.#internalCall = false;
   }
 }
 
-class DialogerConfirm extends Dialoger {
+class DialogioConfirm extends Dialogio {
   static #internalCall = false;
 
   constructor() {
     super();
 
     if (typeof jQuery === "undefined") {
-      console.error("[DialogerJS] jQuery is required for DialogerJS Confirm.");
+      console.error("[DialogioJS] jQuery is required for DialogioJS Confirm.");
       return;
     }
 
-    if (typeof DialogerButtons === "undefined") {
-      console.error("[DialogerJS] No Dialoger button items found.");
+    if (typeof DialogioButtons === "undefined") {
+      console.error("[DialogioJS] No Dialogio button items found.");
       return;
     }
   }
 
   static async #CreateConfirm(title = "", message, buttons = []) {
-    if (!new.target && !DialogerConfirm.#internalCall) {
-      console.warn("[DialogerJS] CreateConfirm cannot be used externally.");
+    if (!new.target && !DialogioConfirm.#internalCall) {
+      console.warn("[DialogioJS] CreateConfirm cannot be used externally.");
       return;
     }
-    DialogerConfirm.#internalCall = false;
+    DialogioConfirm.#internalCall = false;
 
     if (title.length > 40) {
       console.warn(
-        "[DialogerJS] Dialog title is too long. It will be displayed, but CSS can shorten it."
+        "[DialogioJS] Dialog title is too long. It will be displayed, but CSS can shorten it."
       );
     }
 
@@ -434,24 +435,24 @@ class DialogerConfirm extends Dialoger {
       message === null ||
       message.length <= 0
     ) {
-      console.warn("[DialogerJS] Dialog message is invalid.");
+      console.warn("[DialogioJS] Dialog message is invalid.");
       return 3;
     }
 
     if (typeof buttons !== "object" || buttons === undefined) {
-      console.warn("[DialogerJS] Dialog buttons is invalid.");
+      console.warn("[DialogioJS] Dialog buttons is invalid.");
       return 3;
     }
 
-    message = Dialoger._parseMarkdown(message);
+    message = Dialogio._parseMarkdown(message);
 
     const confirmHtml = `
-      <div class="Dialoger__ConfirmOverlay" id="dialogerJSconfirm">
-        <div class="Dialoger__Confirm">
+      <div class="Dialogio__ConfirmOverlay" id="dialogioJSconfirm">
+        <div class="Dialogio__Confirm">
           <div class="Confirm__Header">
             <h1 class="Header__Title">${title}</h1>
             <button type="button" class="Header__CloseButton" data-dcfi="close">${
-              Dialoger._Config.ConfirmCloseIcon
+              Dialogio._Config.ConfirmCloseIcon
             }</button>
           </div>
           <div class="Confirm__Content">
@@ -472,7 +473,7 @@ class DialogerConfirm extends Dialoger {
     $("body").append(confirmHtml);
 
     return new Promise((resolve, reject) => {
-      const confirmElement = $("#dialogerJSconfirm");
+      const confirmElement = $("#dialogioJSconfirm");
 
       confirmElement.on(
         "click",
@@ -497,13 +498,149 @@ class DialogerConfirm extends Dialoger {
    * @param {string} title - The title to display in the header.
    * @param {string} message - The message to display in the confirmation. Supports specific markdowns (LINK)
    * @param {object} buttons - Message dialog buttons
-   * @returns {void}
+   * @returns {string} - Returns clicked button name (ok, cancel, yes etc.)
    * @description Show new confirmation with options and return button clicks.
    * @example
-   * Confirm.Show("This is example title.", "This is example **message**.", DialogerButtons.YesNo);
+   * Confirm.Show("This is example title.", "This is example **message**.", DialogioButtons.YesNo);
    */
   async Show(title = "", message, buttons = []) {
-    DialogerConfirm.#internalCall = true;
-    return await DialogerConfirm.#CreateConfirm(title, message, buttons);
+    DialogioConfirm.#internalCall = true;
+    return await DialogioConfirm.#CreateConfirm(title, message, buttons);
+  }
+}
+
+class DialogioInput extends Dialogio {
+  static #internalCall = false;
+
+  constructor() {
+    super();
+
+    if (typeof jQuery === "undefined") {
+      console.error("[DialogioJS] jQuery is required for DialogioJS Confirm.");
+      return;
+    }
+  }
+
+  static async #CreateInput(title = "", inputs = []) {
+    if (!new.target && !DialogioInput.#internalCall) {
+      console.warn("[DialogioJS] CreateInput cannot be used externally.");
+      return;
+    }
+    DialogioInput.#internalCall = false;
+
+    if (title.length > 40) {
+      console.warn(
+        "[DialogioJS] Dialog title is too long. It will be displayed, but CSS can shorten it."
+      );
+    }
+
+    if (typeof inputs !== "object" || inputs === undefined) {
+      console.warn("[DialogioJS] Dialog inputs is invalid.");
+      return 3;
+    }
+
+    const inputHtml = `
+      <div class="Dialoger__InputOverlay" id="dialogioJSinput">
+          <div class="Dialoger__Input">
+              <div class="Input__Header">
+                  <h1 class="Header__Title">${title}</h1>
+                  <button type="button" class="Header__CloseButton" data-difi="close">${
+                    Dialogio._Config.ConfirmCloseIcon
+                  }</button>
+              </div>
+              <div class="Input__Content">
+                ${inputs.map((inp) => inp.view).join("")}
+              </div>
+              <button type="button" class="Input__Button" data-difi="save">${
+                uel.ok
+              }</button>
+          </div>
+      </div>
+    `;
+
+    $("body").append(inputHtml);
+
+    return await new Promise((resolve, reject) => {
+      const inputElement = $("#dialogioJSinput");
+
+      inputElement.on(
+        "click",
+        ".Input__Button, .Header__CloseButton",
+        function () {
+          const btnType = $(this).data("difi");
+          if (btnType === "close") {
+            resolve([]);
+          } else if (btnType === "save") {
+            const inputsData = inputs.reduce((acc, inp) => {
+              const inputEl = $(`[data-difi="${inp.id}"]`);
+              acc[inp.id] = inputEl.val();
+              return acc;
+            }, {});
+            resolve(inputsData);
+          } else {
+            return;
+          }
+          inputElement.addClass("Hide");
+          inputElement.one(
+            "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd",
+            () => {
+              inputElement.remove();
+            }
+          );
+        }
+      );
+    });
+  }
+
+  /**
+   * Create new confirmation with options
+   * @param {string} title - The title to display in the header.
+   * @param {object} inputs - Created custom Dialogio inputs object. (max 5 input)
+   * @returns {object} - Returns input values or empty object
+   * @description Create and show new input enter with options and return input(s) value.
+   * @example
+   * const input1 = Input.NewInput("TYPE", "ID", "LABEL", "PLACEHOLDER", "VALUE", controlFunction())
+   * const input2 = Input.NewInput("TYPE", "ID", "LABEL", "PLACEHOLDER", "VALUE", controlFunction())
+   * Input.Create("This is example title.", [input1, input2]);
+   */
+  async Create(title = "", inputs = []) {
+    DialogioInput.#internalCall = true;
+    return await DialogioInput.#CreateInput(title, inputs);
+  }
+
+  /**
+   * Get Dialogio custom input for create input modal
+   * @param {string} type - Input type data. (Text, number)
+   * @param {string} id - Input custom id for get value in input modal.
+   * @param {string} label - Label text for input.
+   * @param {string} placeholder - Placeholder text for input content.
+   * @param {string} value - Input value data.
+   * @returns
+   */
+  NewInput(type = "text", id, label = "", placeholder = "", value = "") {
+    if (!["text", "number", "tel", "email", "password"].includes(type)) {
+      console.error(
+        "[DialogioJS] Dialogio custom input supports only text inputs. (Text, number, tel etc.)"
+      );
+      return;
+    }
+
+    id = id.trim().replace(/[^a-zA-Z0-9_-]/g, "");
+    if (id.length < 4) {
+      console.error(
+        "[DialogioJS] Dialogio custom input id length is should be longer than 3."
+      );
+      return;
+    }
+
+    const inputhtml = `
+      <div class="Custom__InputBox">
+        <label class="InputLabel">${label || ""}</label>
+        <input type="text" data-difi="${id}" class="CustomInput" placeholder="${
+      placeholder || uel.default_placeholder
+    }" value="${value || ""}"/>
+      </div>
+    `;
+    return { id: id, view: inputhtml };
   }
 }
