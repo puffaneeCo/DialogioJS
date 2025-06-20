@@ -3,19 +3,107 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>DialogioJS Demo</title>
     <link rel="stylesheet" href="demo.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dialogio@2.1.0/dist/dialogio.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css">
 </head>
 
 <body>
-    <div class="App">
-        
+    <div class="Header">
+        <div class="Title">
+            <h1>Dialogio</h1>
+            <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet"
+                fill="#090909">
+                <g stroke-width="0"></g>
+                <g stroke-linecap="round" stroke-linejoin="round"></g>
+                <g>
+                    <path d="M0 0h256v256H0V0z" fill="#F7DF1E"></path>
+                    <path
+                        d="M67.312 213.932l19.59-11.856c3.78 6.701 7.218 12.371 15.465 12.371 7.905 0 12.89-3.092 12.89-15.12v-81.798h24.057v82.138c0 24.917-14.606 36.259-35.916 36.259-19.245 0-30.416-9.967-36.087-21.996M152.381 211.354l19.588-11.341c5.157 8.421 11.859 14.607 23.715 14.607 9.969 0 16.325-4.984 16.325-11.858 0-8.248-6.53-11.17-17.528-15.98l-6.013-2.58c-17.357-7.387-28.87-16.667-28.87-36.257 0-18.044 13.747-31.792 35.228-31.792 15.294 0 26.292 5.328 34.196 19.247L210.29 147.43c-4.125-7.389-8.591-10.31-15.465-10.31-7.046 0-11.514 4.468-11.514 10.31 0 7.217 4.468 10.14 14.778 14.608l6.014 2.577c20.45 8.765 31.963 17.7 31.963 37.804 0 21.654-17.012 33.51-39.867 33.51-22.339 0-36.774-10.654-43.819-24.574">
+                    </path>
+                </g>
+            </svg>
+        </div>
+        <p class="Description">
+            A simple, responsive, modern JavaScript library with jQuery support for toast notifications, custom
+            confirmation alerts and custom input modals.
+        </p>
+        <div class="Buttons">
+            <button type="button" class="IconButton" onclick="go('https:\/\/github.com/puffanee/DialogioJS')">
+                <svg viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff">
+                    <g stroke-width="0"></g>
+                    <g stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g>
+                        <g troke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-140.000000, -7559.000000)" fill="#ffffff">
+                                <g transform="translate(56.000000, 160.000000)">
+                                    <path
+                                        d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399">
+                                    </path>
+                                    </path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg> GitHub Repository</button>
+            <button type="button" class="IconButton" onclick="go('https:\/\/github.com/puffanee/DialogioJS')">
+                <svg fill="#ffffff" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
+                    <g stroke-width="0"></g>
+                    <g stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g>
+                        <path
+                            d="M10.802 17.77a.703.703 0 1 1-.002 1.406.703.703 0 0 1 .002-1.406m11.024-4.347a.703.703 0 1 1 .001-1.406.703.703 0 0 1-.001 1.406m0-2.876a2.176 2.176 0 0 0-2.174 2.174c0 .233.039.465.115.691l-7.181 3.823a2.165 2.165 0 0 0-1.784-.937c-.829 0-1.584.475-1.95 1.216l-6.451-3.402c-.682-.358-1.192-1.48-1.138-2.502.028-.533.212-.947.493-1.107.178-.1.392-.092.62.027l.042.023c1.71.9 7.304 3.847 7.54 3.956.363.169.565.237 1.185-.057l11.564-6.014c.17-.064.368-.227.368-.474 0-.342-.354-.477-.355-.477-.658-.315-1.669-.788-2.655-1.25-2.108-.987-4.497-2.105-5.546-2.655-.906-.474-1.635-.074-1.765.006l-.252.125C7.78 6.048 1.46 9.178 1.1 9.397.457 9.789.058 10.57.006 11.539c-.08 1.537.703 3.14 1.824 3.727l6.822 3.518a2.175 2.175 0 0 0 2.15 1.862 2.177 2.177 0 0 0 2.173-2.14l7.514-4.073c.38.298.853.461 1.337.461A2.176 2.176 0 0 0 24 12.72a2.176 2.176 0 0 0-2.174-2.174">
+                        </path>
+                    </g>
+                </svg> Documentation</button>
+        </div>
+    </div>
+
+    <div class="TestModal">
+        <div class="TestForm">
+            <div class="Tab__Buttons">
+                <button type="button" class="TabButton Active" id="TabOpen_Toast">Toast Notification</button>
+                <button type="button" class="TabButton" id="TabOpen_Confirm">Confirmation</button>
+                <button type="button" class="TabButton" id="TabOpen_Input">Input</button>
+            </div>
+            <div class="Tab__Content Active" id="Tab__Toast">
+                <div class="Inputs">
+                    <div class="InputBox">
+                        <label for="ToastMessage">Message</label>
+                        <input type="text" id="ToastMessage" placeholder="Toast notification message"
+                            value="Example toast notification">
+                    </div>
+                    <div class="InputBox">
+                        <label for="ToastLink">Link</label>
+                        <input type="url" id="ToastLink" placeholder="Redirected when clicked">
+                    </div>
+                </div>
+                <div class="Code">
+                    <pre><code class="language-javascript">
+const dlg = new DialogioInput();
+const np1 = dlg.NewInput("text", "test", "test");
+const np3 = dlg.NewInput("text", "test_c", "test 22aa2", "test metn");
+const dlgoer = await dlg.Create("test ttle", [np1, np3]);
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        style="width: 100%; display: flex; justify-content: center; align-items: center; flex-direction: row; gap: 0.1rem;">
+        <a href="https://github.com/puffanee"><img src="/demo/pf-fl-logo.svg" alt="by @Puffanee"
+                class="PuffaneeLogo" /></a>
+        <p style="font-weight: 300; margin-top: 30px; font-size: 0.9rem;">&copy;</p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dialogiojs@2.1.0/dist/dialogio.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dialogiojs@2.2.3/dist/dialogio-all.min.js"></script>
     <script src="demo.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>

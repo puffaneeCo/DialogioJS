@@ -214,7 +214,7 @@ class DialogioToast extends Dialogio {
     }
   }
 
-  static #CreateToast(style = 0, message = "", redirect = "", setIcon = true) {
+  static #CreateToast(style = 0, message = "", redirect = "", showIcon = true) {
     if (!new.target && !DialogioToast.#internalCall) {
       console.warn("[DialogioJS] CreateToast cannot be used externally.");
       return;
@@ -235,8 +235,8 @@ class DialogioToast extends Dialogio {
       return;
     }
 
-    if (typeof setIcon !== "boolean") {
-      console.error("[DialogioJS] setIcon must be a boolean value.");
+    if (typeof showIcon !== "boolean") {
+      console.error("[DialogioJS] showIcon must be a boolean value.");
       return;
     }
 
@@ -251,7 +251,7 @@ class DialogioToast extends Dialogio {
       .toString(36)
       .slice(2, 8)}`;
     const toastStyle = Dialogio._Config.ToastStyles[style];
-    const iconHtml = setIcon
+    const iconHtml = showIcon
       ? `<div class="ToastIcon">${Dialogio._Config.ToastIcons[style]}</div>`
       : "";
 
@@ -321,80 +321,80 @@ class DialogioToast extends Dialogio {
   /**
    * Displays a notification (bell) toast notification.
    * @param {string} message - The message to display in the toast.
-   * @param {boolean} setIcon - Whether to display the icon in the toast. Defaults to true.
+   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @param {string} redirect - When you click on the notification, you will be redirected to this address (only url). Default is no redirect, remove notification.
    * @returns {void}
    * @description Displays a notification (bell) toast notification with the specified message and icon.
    * @example
    * Toast.Notif("This is a notification toast message.", "https://github.com/puffanee", true);
    */
-  Notif(message = "", redirect = "", setIcon = true) {
+  Notif(message = "", redirect = "", showIcon = true) {
     DialogioToast.#internalCall = true;
-    DialogioToast.#CreateToast(0, message, redirect, setIcon);
+    DialogioToast.#CreateToast(0, message, redirect, showIcon);
     DialogioToast.#internalCall = false;
   }
 
   /**
    * Displays a danger toast notification.
    * @param {string} message - The message to display in the toast.
-   * @param {boolean} setIcon - Whether to display the icon in the toast. Defaults to true.
+   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @param {string} redirect - When you click on the notification, you will be redirected to this address (only url). Default is no redirect, remove notification.
    * @returns {void}
    * @description Displays a danger toast notification with the specified message and icon.
    * @example
    * Toast.Danger("This is a danger toast message.", "https://github.com/puffanee", true);
    */
-  Danger(message = "", redirect = "", setIcon = true) {
+  Danger(message = "", redirect = "", showIcon = true) {
     DialogioToast.#internalCall = true;
-    DialogioToast.#CreateToast(1, message, redirect, setIcon);
+    DialogioToast.#CreateToast(1, message, redirect, showIcon);
     DialogioToast.#internalCall = false;
   }
 
   /**
    * Displays a success toast notification.
    * @param {string} message - The message to display in the toast.
-   * @param {boolean} setIcon - Whether to display the icon in the toast. Defaults to true.
+   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @param {string} redirect - When you click on the notification, you will be redirected to this address (only url). Default is no redirect, remove notification.
    * @returns {void}
    * @description Displays a success toast notification with the specified message and icon.
    * @example
    * Toast.Success("This is a success toast message.", "https://github.com/puffanee", true);
    */
-  Success(message = "", redirect = "", setIcon = true) {
+  Success(message = "", redirect = "", showIcon = true) {
     DialogioToast.#internalCall = true;
-    DialogioToast.#CreateToast(2, message, redirect, setIcon);
+    DialogioToast.#CreateToast(2, message, redirect, showIcon);
     DialogioToast.#internalCall = false;
   }
 
   /**
    * Displays a warning toast notification.
    * @param {string} message - The message to display in the toast.
-   * @param {boolean} setIcon - Whether to display the icon in the toast. Defaults to true.
+   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @param {string} redirect - When you click on the notification, you will be redirected to this address (only url). Default is no redirect, remove notification.
    * @returns {void}
    * @description Displays a warning toast notification with the specified message and icon.
    * @example
    * Toast.Warn("This is a warning toast message.", "https://github.com/puffanee", true);
    */
-  Warn(message = "", redirect = "", setIcon = true) {
+  Warn(message = "", redirect = "", showIcon = true) {
     DialogioToast.#internalCall = true;
-    DialogioToast.#CreateToast(3, message, redirect, setIcon);
+    DialogioToast.#CreateToast(3, message, redirect, showIcon);
     DialogioToast.#internalCall = false;
   }
 
   /**
    * Displays a information toast notification.
    * @param {string} message - The message to display in the toast.
-   * @param {boolean} setIcon - Whether to display the icon in the toast. Defaults to true.
+   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @param {string} redirect - When you click on the notification, you will be redirected to this address (only url). Default is no redirect, remove notification.
    * @returns {void}
    * @description Displays a information toast notification with the specified message and icon.
    * @example
    * Toast.Info("This is a information toast message.", "https://github.com/puffanee", true);
    */
-  Info(message = "", redirect = "", setIcon = true) {
+  Info(message = "", redirect = "", showIcon = true) {
     DialogioToast.#internalCall = true;
-    DialogioToast.#CreateToast(4, message, redirect, setIcon);
+    DialogioToast.#CreateToast(4, message, redirect, showIcon);
     DialogioToast.#internalCall = false;
   }
 }
