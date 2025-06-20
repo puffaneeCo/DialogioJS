@@ -66,8 +66,8 @@ class DialogioInput extends Dialogio {
     }
 
     const inputHtml = `
-      <div class="Dialoger__InputOverlay" id="dialogioJSinput">
-          <div class="Dialoger__Input">
+      <div class="DialogioJS__InputOverlay" id="dialogioJSinput">
+          <div class="DialogioJS__Input">
               <div class="Input__Header">
                   <h1 class="Header__Title">${title}</h1>
                   <button type="button" class="Header__CloseButton" data-difi="close">${
