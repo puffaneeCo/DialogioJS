@@ -124,7 +124,7 @@ class DialogioToast extends Dialogio {
     const encodedMessage = $("<div>").text(message).html();
 
     const toastHtml = `
-      <div class="Dialogio__Toast ${toastStyle}" id="${id}">
+      <div class="DialogioJS__Toast ${toastStyle}" id="${id}">
         ${iconHtml}
         <div class="ToastMessage">${encodedMessage}</div>
       </div>
@@ -171,7 +171,7 @@ class DialogioToast extends Dialogio {
     $("#dialogioJStoasts").remove();
 
     const newToast = $("<div>", {
-      class: `Dialogio__Toasts ${location}`,
+      class: `DialogioJS__Toasts ${location}`,
       id: "dialogioJStoasts",
     });
 

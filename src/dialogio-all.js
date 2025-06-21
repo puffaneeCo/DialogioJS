@@ -258,7 +258,7 @@ class DialogioToast extends Dialogio {
     const encodedMessage = $("<div>").text(message).html();
 
     const toastHtml = `
-      <div class="Dialogio__Toast ${toastStyle}" id="${id}">
+      <div class="DialogioJS__Toast ${toastStyle}" id="${id}">
         ${iconHtml}
         <div class="ToastMessage">${encodedMessage}</div>
       </div>
@@ -305,7 +305,7 @@ class DialogioToast extends Dialogio {
     $("#dialogioJStoasts").remove();
 
     const newToast = $("<div>", {
-      class: `Dialogio__Toasts ${location}`,
+      class: `DialogioJS__Toasts ${location}`,
       id: "dialogioJStoasts",
     });
 
@@ -417,6 +417,11 @@ class DialogioConfirm extends Dialogio {
     }
     DialogioConfirm.#internalCall = false;
 
+    if ($("#dialogioJSconfirm").length > 0) {
+      console.warn("[DialogioJS] A confirm dialog is already open.");
+      return 4;
+    }
+
     if (title.length > 40) {
       console.warn(
         "[DialogioJS] Dialog title is too long. It will be displayed, but CSS can shorten it."
@@ -441,8 +446,8 @@ class DialogioConfirm extends Dialogio {
     message = Dialogio._parseMarkdown(message);
 
     const confirmHtml = `
-      <div class="Dialogio__ConfirmOverlay" id="dialogioJSconfirm">
-        <div class="Dialogio__Confirm">
+      <div class="DialogioJS__ConfirmOverlay" id="dialogioJSconfirm">
+        <div class="DialogioJS__Confirm">
           <div class="Confirm__Header">
             <h1 class="Header__Title">${title}</h1>
             <button type="button" class="Header__CloseButton" data-dcfi="close">${
@@ -477,7 +482,7 @@ class DialogioConfirm extends Dialogio {
           if (btnType === "true" || btnType === "false") {
             resolve(btnType === "true" ? true : false);
           } else {
-            resolve(btnType.toLowerCase().trim());
+            resolve(btnType);
           }
           confirmElement.addClass("Hide");
           confirmElement.one(
@@ -525,6 +530,11 @@ class DialogioInput extends Dialogio {
       return;
     }
     DialogioInput.#internalCall = false;
+
+    if ($("#dialogioJSinput").length > 0) {
+      console.warn("[DialogioJS] A input dialog is already open.");
+      return 4;
+    }
 
     if (title.length > 40) {
       console.warn(
@@ -593,7 +603,7 @@ class DialogioInput extends Dialogio {
   /**
    * Create new confirmation with options
    * @param {string} title - The title to display in the header.
-   * @param {object} inputs - Created custom Dialogio inputs object. (max 5 input)
+   * @param {object} inputs - Created custom Dialogio inputs object. (Max. 5 input)
    * @returns {object} - Returns input values or empty object
    * @description Create and show new input enter with options and return input(s) value.
    * @example

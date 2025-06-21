@@ -54,6 +54,11 @@ class DialogioInput extends Dialogio {
     }
     DialogioInput.#internalCall = false;
 
+    if ($("#dialogioJSinput").length > 0) {
+      console.warn("[DialogioJS] A input dialog is already open.");
+      return 4;
+    }
+
     if (title.length > 40) {
       console.warn(
         "[DialogioJS] Dialog title is too long. It will be displayed, but CSS can shorten it."

@@ -164,6 +164,11 @@ class DialogioConfirm extends Dialogio {
     }
     DialogioConfirm.#internalCall = false;
 
+    if ($("#dialogioJSconfirm").length > 0) {
+      console.warn("[DialogioJS] A confirm dialog is already open.");
+      return 4;
+    }
+
     if (title.length > 40) {
       console.warn(
         "[DialogioJS] Dialog title is too long. It will be displayed, but CSS can shorten it."
@@ -188,8 +193,8 @@ class DialogioConfirm extends Dialogio {
     message = Dialogio._parseMarkdown(message);
 
     const confirmHtml = `
-      <div class="Dialogio__ConfirmOverlay" id="dialogioJSconfirm">
-        <div class="Dialogio__Confirm">
+      <div class="DialogioJS__ConfirmOverlay" id="dialogioJSconfirm">
+        <div class="DialogioJS__Confirm">
           <div class="Confirm__Header">
             <h1 class="Header__Title">${title}</h1>
             <button type="button" class="Header__CloseButton" data-dcfi="close">${
@@ -224,7 +229,7 @@ class DialogioConfirm extends Dialogio {
           if (btnType === "true" || btnType === "false") {
             resolve(btnType === "true" ? true : false);
           } else {
-            resolve(btnType.toLowerCase().trim());
+            resolve(btnType);
           }
           confirmElement.addClass("Hide");
           confirmElement.one(

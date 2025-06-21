@@ -48,10 +48,10 @@ npm i dialogiojs
   </body>
 </html>
 ```
-
-## Demo
+<!--## Demo
 
 - **Demo is here:** [demo.puffanee.com/dialogiojs](https://demo.puffanee.com/dialogiojs)
+-->
 
 ## 📃 Advanced Documentatiton
 
