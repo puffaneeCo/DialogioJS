@@ -1,4 +1,4 @@
-/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffanee/DialogioJS */
+/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffaneeCo/DialogioJS | v3.0.0 */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 :root {
@@ -10,7 +10,6 @@
   --dialoger-notification-ms: 8000ms;
 }
 
-/* Toast Notifications */
 .DialogioJS__Toasts {
   display: flex;
   flex-direction: column;
@@ -139,7 +138,6 @@
   background-color: var(--dialoger-blackalert-color);
 }
 
-/* Custom Confirm */
 .DialogioJS__ConfirmOverlay {
   position: fixed;
   display: flex;
@@ -554,7 +552,6 @@ a:visited {
   color: #ffffff;
 }
 
-/* Animations */
 @keyframes slide-in-top {
   from {
     opacity: 0;

@@ -1,4 +1,4 @@
-/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffanee/DialogioJS */
+/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffaneeCo/DialogioJS | v3.0.0 */
 
 const dialogio_lang = {
   "tr-TR": {
@@ -282,12 +282,6 @@ class DialogioToast extends Dialogio {
     });
   }
 
-  /**
-   * Sets the location of the toast notifications.
-   * @param {number} location - The location number of the toast on the screen. (LINK)
-   * @returns {void}
-   * @description Sets the location of the toast notifications on the screen.
-   */
   static #SetLocation(location = 0) {
     if (!new.target && !DialogioToast.#internalCall) {
       console.warn("[DialogioJS] SetLocation cannot be used externally.");
@@ -321,12 +315,12 @@ class DialogioToast extends Dialogio {
   /**
    * Displays a notification (bell) toast notification.
    * @param {string} message - The message to display in the toast.
-   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @param {string} redirect - When you click on the notification, you will be redirected to this address (only url). Default is no redirect, remove notification.
+   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @returns {void}
    * @description Displays a notification (bell) toast notification with the specified message and icon.
    * @example
-   * Toast.Notif("This is a notification toast message.", "https://github.com/puffanee", true);
+   * Toast.Notif("This is a notification toast message.", "https://github.com/puffaneeCo", true);
    */
   Notif(message = "", redirect = "", showIcon = true) {
     DialogioToast.#internalCall = true;
@@ -337,12 +331,12 @@ class DialogioToast extends Dialogio {
   /**
    * Displays a danger toast notification.
    * @param {string} message - The message to display in the toast.
-   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @param {string} redirect - When you click on the notification, you will be redirected to this address (only url). Default is no redirect, remove notification.
+   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @returns {void}
    * @description Displays a danger toast notification with the specified message and icon.
    * @example
-   * Toast.Danger("This is a danger toast message.", "https://github.com/puffanee", true);
+   * Toast.Danger("This is a danger toast message.", "https://github.com/puffaneeCo", true);
    */
   Danger(message = "", redirect = "", showIcon = true) {
     DialogioToast.#internalCall = true;
@@ -353,12 +347,12 @@ class DialogioToast extends Dialogio {
   /**
    * Displays a success toast notification.
    * @param {string} message - The message to display in the toast.
-   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @param {string} redirect - When you click on the notification, you will be redirected to this address (only url). Default is no redirect, remove notification.
+   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @returns {void}
    * @description Displays a success toast notification with the specified message and icon.
    * @example
-   * Toast.Success("This is a success toast message.", "https://github.com/puffanee", true);
+   * Toast.Success("This is a success toast message.", "https://github.com/puffaneeCo", true);
    */
   Success(message = "", redirect = "", showIcon = true) {
     DialogioToast.#internalCall = true;
@@ -369,12 +363,12 @@ class DialogioToast extends Dialogio {
   /**
    * Displays a warning toast notification.
    * @param {string} message - The message to display in the toast.
-   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @param {string} redirect - When you click on the notification, you will be redirected to this address (only url). Default is no redirect, remove notification.
+   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @returns {void}
    * @description Displays a warning toast notification with the specified message and icon.
    * @example
-   * Toast.Warn("This is a warning toast message.", "https://github.com/puffanee", true);
+   * Toast.Warn("This is a warning toast message.", "https://github.com/puffaneeCo", true);
    */
   Warn(message = "", redirect = "", showIcon = true) {
     DialogioToast.#internalCall = true;
@@ -385,12 +379,12 @@ class DialogioToast extends Dialogio {
   /**
    * Displays a information toast notification.
    * @param {string} message - The message to display in the toast.
-   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @param {string} redirect - When you click on the notification, you will be redirected to this address (only url). Default is no redirect, remove notification.
+   * @param {boolean} showIcon - Whether to display the icon in the toast. Defaults to true.
    * @returns {void}
    * @description Displays a information toast notification with the specified message and icon.
    * @example
-   * Toast.Info("This is a information toast message.", "https://github.com/puffanee", true);
+   * Toast.Info("This is a information toast message.", "https://github.com/puffaneeCo", true);
    */
   Info(message = "", redirect = "", showIcon = true) {
     DialogioToast.#internalCall = true;
@@ -480,7 +474,11 @@ class DialogioConfirm extends Dialogio {
         ".Confirm__Button, .Header__CloseButton",
         function () {
           const btnType = $(this).data("dcfi");
-          resolve(btnType);
+          if (btnType === "true" || btnType === "false") {
+            resolve(btnType === "true" ? true : false);
+          } else {
+            resolve(btnType.toLowerCase().trim());
+          }
           confirmElement.addClass("Hide");
           confirmElement.one(
             "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd",
@@ -496,12 +494,12 @@ class DialogioConfirm extends Dialogio {
   /**
    * Create new confirmation with options
    * @param {string} title - The title to display in the header.
-   * @param {string} message - The message to display in the confirmation. Supports specific markdowns (LINK)
+   * @param {string} message - The message to display in the confirmation. Supports specific markdowns.
    * @param {object} buttons - Message dialog buttons
    * @returns {string} - Returns clicked button name (ok, cancel, yes etc.)
    * @description Show new confirmation with options and return button clicks.
    * @example
-   * Confirm.Show("This is example title.", "This is example **message**.", DialogioButtons.YesNo);
+   * await Confirm.Show("This is example title.", "This is example **message**.", DialogioButtons.YesNo);
    */
   async Show(title = "", message, buttons = []) {
     DialogioConfirm.#internalCall = true;

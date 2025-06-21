@@ -1,4 +1,4 @@
-/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffanee/DialogioJS */
+/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffaneeCo/DialogioJS | v3.0.0 */
 
 const dialogio_lang = {
   "tr-TR": {
@@ -121,7 +121,7 @@ class DialogioInput extends Dialogio {
   /**
    * Create new confirmation with options
    * @param {string} title - The title to display in the header.
-   * @param {object} inputs - Created custom Dialogio inputs object. (max 5 input)
+   * @param {object} inputs - Created custom Dialogio inputs object. (Max. 5 input)
    * @returns {object} - Returns input values or empty object
    * @description Create and show new input enter with options and return input(s) value.
    * @example

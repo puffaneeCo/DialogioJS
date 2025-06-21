@@ -1,6 +1,6 @@
 {
   "name": "dialogiojs",
-  "version": "2.2.3",
+  "version": "2.9.9",
   "description": "A simple, responsive, modern JavaScript library with jQuery support for toast notifications, custom confirmation alerts and custom input modals.",
   "keywords": [
     "javascript",
@@ -12,13 +12,13 @@
     "toast-notifications",
     "custom-confirm"
   ],
-  "homepage": "https://github.com/puffanee/DialogioJS",
+  "homepage": "https://github.com/puffaneeCo/DialogioJS",
   "bugs": {
-    "url": "https://github.com/puffanee/DialogioJS/issues"
+    "url": "https://github.com/puffaneeCo/DialogioJS/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/puffanee/DialogioJS.git"
+    "url": "git+https://github.com/puffaneeCo/DialogioJS.git"
   },
   "license": "MIT",
   "author": "Ahmet Mert Kaymaz @puffanee",

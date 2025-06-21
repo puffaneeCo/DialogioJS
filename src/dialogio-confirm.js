@@ -1,4 +1,4 @@
-/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffanee/DialogioJS */
+/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffaneeCo/DialogioJS | v3.0.0 */
 
 const dialogio_lang = {
   "tr-TR": {
@@ -221,7 +221,11 @@ class DialogioConfirm extends Dialogio {
         ".Confirm__Button, .Header__CloseButton",
         function () {
           const btnType = $(this).data("dcfi");
-          resolve(btnType);
+          if (btnType === "true" || btnType === "false") {
+            resolve(btnType === "true" ? true : false);
+          } else {
+            resolve(btnType.toLowerCase().trim());
+          }
           confirmElement.addClass("Hide");
           confirmElement.one(
             "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd",
@@ -237,12 +241,12 @@ class DialogioConfirm extends Dialogio {
   /**
    * Create new confirmation with options
    * @param {string} title - The title to display in the header.
-   * @param {string} message - The message to display in the confirmation. Supports specific markdowns (LINK)
+   * @param {string} message - The message to display in the confirmation. Supports specific markdowns.
    * @param {object} buttons - Message dialog buttons
    * @returns {string} - Returns clicked button name (ok, cancel, yes etc.)
    * @description Show new confirmation with options and return button clicks.
    * @example
-   * Confirm.Show("This is example title.", "This is example **message**.", DialogioButtons.YesNo);
+   * await Confirm.Show("This is example title.", "This is example **message**.", DialogioButtons.YesNo);
    */
   async Show(title = "", message, buttons = []) {
     DialogioConfirm.#internalCall = true;
