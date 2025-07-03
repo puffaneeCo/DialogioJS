@@ -1,5 +1,5 @@
-/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffaneeCo/DialogioJS | v3.0.0 */
-
+/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffaneeCo/DialogioJS | custom confirmation single v3.0.1 */
+window.DialogioConfirm = window.DialogioConfirm || {};
 const dialogio_lang = {
   "tr-TR": {
     yes: "evet",

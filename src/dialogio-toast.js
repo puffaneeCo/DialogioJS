@@ -1,5 +1,5 @@
-/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffaneeCo/DialogioJS | v3.0.0 */
-
+/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffaneeCo/DialogioJS | toasts single v3.0.1 */
+window.DialogioToast = window.DialogioToast || {};
 const defuel = navigator.language || navigator.userLanguage;
 var uel = "en-US";
 if (dialogio_lang[defuel] !== undefined) {

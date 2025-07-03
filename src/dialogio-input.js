@@ -1,5 +1,5 @@
-/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffaneeCo/DialogioJS | v3.0.0 */
-
+/*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffaneeCo/DialogioJS | custom input single v3.0.1 */
+window.DialogioCustomInput = window.DialogioCustomInput || {};
 const dialogio_lang = {
   "tr-TR": {
     ok: "tamam",

@@ -1,6 +1,6 @@
 {
   "name": "dialogiojs",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A simple, responsive, modern JavaScript library with jQuery support for toast notifications, custom confirmation alerts and custom input modals.",
   "keywords": [
     "javascript",
