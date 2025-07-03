@@ -1,53 +1,53 @@
 {
-  "name": "dialogiojs",
-  "version": "3.0.1",
-  "description": "A simple, responsive, modern JavaScript library with jQuery support for toast notifications, custom confirmation alerts and custom input modals.",
-  "keywords": [
-    "javascript",
-    "jquery",
-    "modern",
-    "simple",
-    "custom",
-    "javascript-library",
-    "toast-notifications",
-    "custom-confirm"
-  ],
-  "homepage": "https://github.com/puffaneeCo/DialogioJS",
-  "bugs": {
-    "url": "https://github.com/puffaneeCo/DialogioJS/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/puffaneeCo/DialogioJS.git"
-  },
-  "license": "MIT",
-  "author": "Ahmet Mert Kaymaz @puffanee",
-  "type": "commonjs",
-  "exports": {
-    ".": {
-      "import": "./dist/dialogio.js",
-      "require": "./dist/dialogio.cjs"
-    }
-  },
-  "main": "dialogio.js",
-  "files": [
-    "dist",
-    "src"
-  ],
-  "scripts": {
-    "build:js": "powershell -Command \"Get-ChildItem src\\*.js | ForEach-Object { uglifyjs $_.FullName -o \\\"dist\\\\$($_.BaseName).min.js\\\" }\"",
-    "build:css": "cleancss -o dist/dialogio.min.css src/dialogio.css",
-    "build": "npm run build:js && npm run build:css"
-  },
-  "dependencies": {
-    "jquery": "^3.6.0"
-  },
-  "devDependencies": {
-    "clean-css-cli": "^5.6.3",
-    "uglify-js": "^3.19.3"
-  },
-  "engines": {
-    "node": ">=10.0.0"
-  },
-  "filename": "dialogio.js"
+     "name": "dialogiojs",
+     "version": "3.0.2",
+     "description": "A simple, responsive, modern JavaScript library with jQuery support for toast notifications, custom confirmation alerts and custom input modals.",
+     "keywords": [
+          "javascript",
+          "jquery",
+          "modern",
+          "simple",
+          "custom",
+          "javascript-library",
+          "toast-notifications",
+          "custom-confirm"
+     ],
+     "homepage": "https://github.com/puffaneeCo/DialogioJS",
+     "bugs": {
+          "url": "https://github.com/puffaneeCo/DialogioJS/issues"
+     },
+     "repository": {
+          "type": "git",
+          "url": "git+https://github.com/puffaneeCo/DialogioJS.git"
+     },
+     "license": "MIT",
+     "author": "Ahmet Mert Kaymaz @puffanee",
+     "type": "commonjs",
+     "exports": {
+          ".": {
+               "import": "./dist/dialogio.js",
+               "require": "./dist/dialogio.cjs"
+          }
+     },
+     "main": "dialogio.js",
+     "files": [
+          "dist",
+          "src"
+     ],
+     "scripts": {
+          "build:js": "powershell -Command \"Get-ChildItem src\\*.js | ForEach-Object { uglifyjs $_.FullName -o \\\"dist\\\\$($_.BaseName).min.js\\\" }\"",
+          "build:css": "cleancss -o dist/dialogio.min.css src/dialogio.css",
+          "build": "npm run build:js && npm run build:css"
+     },
+     "dependencies": {
+          "jquery": "^3.6.0"
+     },
+     "devDependencies": {
+          "clean-css-cli": "^5.6.3",
+          "uglify-js": "^3.19.3"
+     },
+     "engines": {
+          "node": ">=10.0.0"
+     },
+     "filename": "dialogio.js"
 }
