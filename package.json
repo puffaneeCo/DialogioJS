@@ -1,6 +1,6 @@
 {
      "name": "dialogiojs",
-     "version": "3.0.2",
+     "version": "3.0.3",
      "description": "A simple, responsive, modern JavaScript library with jQuery support for toast notifications, custom confirmation alerts and custom input modals.",
      "keywords": [
           "javascript",
@@ -35,7 +35,7 @@
           "src"
      ],
      "scripts": {
-          "build:js": "powershell -Command \"Get-ChildItem src\\*.js | ForEach-Object { uglifyjs $_.FullName -o \\\"dist\\\\$($_.BaseName).min.js\\\" }\"",
+          "build:js": "powershell -Command \"Get-ChildItem src\\*.js | ForEach-Object { uglifyjs.cmd $_.FullName -o \\\"dist\\\\$($_.BaseName).min.js\\\" }\"",
           "build:css": "cleancss -o dist/dialogio.min.css src/dialogio.css",
           "build": "npm run build:js && npm run build:css"
      },

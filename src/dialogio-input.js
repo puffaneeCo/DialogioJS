@@ -24,10 +24,7 @@ const dialogio_lang = {
 };
 
 const defuel = navigator.language || navigator.userLanguage;
-var uel = "en-US";
-if (dialogio_lang[defuel] !== undefined) {
-     uel = dialogio_lang[defuel];
-}
+const uel = dialogio_lang[defuel] || dialogio_lang["en-US"];
 
 class Dialogio {
      static _Config = {

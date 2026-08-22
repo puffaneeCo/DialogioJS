@@ -69,10 +69,7 @@ const dialogio_lang = {
 };
 
 const defuel = navigator.language || navigator.userLanguage;
-var uel = "en-US";
-if (dialogio_lang[defuel] !== undefined) {
-     uel = dialogio_lang[defuel];
-}
+const uel = dialogio_lang[defuel] || dialogio_lang["en-US"];
 
 const DialogioButtons = {
      YesNo: [
@@ -168,7 +165,7 @@ class DialogioConfirm extends Dialogio {
                return 3;
           }
 
-          if (typeof buttons !== "object" || buttons === undefined) {
+          if (!Array.isArray(buttons)) {
                console.warn("[DialogioJS] Dialog buttons is invalid.");
                return 3;
           }
@@ -186,7 +183,7 @@ class DialogioConfirm extends Dialogio {
             <div class="Confirm__Message">${message}</div>
           </div>
           <div class="Confirm__Buttons">
-            ${buttons.map((btn) => `<button type="button" class="Confirm__Button Btn${btn.ty}" data-dcfi="${btn.i}">${btn.t}</button>`).join("")}
+            ${buttons.map((btn, index) => `<button type="button" class="Confirm__Button Btn${btn?.ty || "Pos"}" data-dcfi="${btn?.i ?? index}">${btn?.t ?? btn?.text ?? btn?.label ?? uel.ok}</button>`).join("")}
           </div>
         </div>
       </div>

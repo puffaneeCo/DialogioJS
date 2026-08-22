@@ -21,7 +21,10 @@
      height: auto;
      gap: 10px;
      max-width: 35rem;
-     transition: all 0.3s ease;
+     width: min(calc(100vw - 30px), 35rem);
+     transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
 }
 
 .DialogioJS__Toasts {
@@ -80,14 +83,17 @@
      border-radius: 1rem;
      color: #ffffff;
      align-items: center;
-     animation-duration: 0.5s, 0.5s;
+     animation-duration: 0.25s, 0.35s;
      animation-fill-mode: forwards;
      position: relative;
      overflow: hidden;
      cursor: pointer;
      box-sizing: border-box;
-     width: fit-content;
-     transition: 0.3s ease;
+     width: 100%;
+     max-width: 100%;
+     transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
      opacity: 1;
 }
 
@@ -95,6 +101,8 @@
      font-family: "Inter", sans-serif;
      font-weight: 500;
      font-size: 1rem;
+     min-width: 0;
+     overflow-wrap: anywhere;
 }
 
 .DialogioJS__Toasts .DialogioJS__Toast .ToastIcon {
@@ -152,7 +160,8 @@
      align-items: center;
      justify-content: center;
      background-color: rgba(0, 0, 0, 0.2);
-     backdrop-filter: blur(15px);
+     backdrop-filter: blur(6px);
+     -webkit-backdrop-filter: blur(6px);
      z-index: 9998;
      top: 0;
      left: 0;
@@ -164,7 +173,9 @@
      animation-fill-mode: forwards;
      animation-name: slide-in-top;
      opacity: 1;
-     transition: 0.2s ease-in-out;
+     transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
      transform: translateY(0);
      visibility: visible;
 }
@@ -190,14 +201,16 @@
      border-radius: 1rem;
      overflow: hidden;
      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-     animation-duration: 0.9s;
+     animation-duration: 0.25s;
      animation-fill-mode: forwards;
      animation-name: slide-in-top;
      position: relative;
      box-sizing: border-box;
      z-index: 9999;
      opacity: 1;
-     transition: 0.2s ease-in-out;
+     transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
      transform: translateY(0);
      visibility: visible;
 }
@@ -209,7 +222,9 @@
      flex-direction: row;
      justify-content: space-between;
      box-sizing: border-box;
-     height: 1.5em;
+     min-height: 2.3rem;
+     height: auto;
+     position: relative;
      user-select: none;
      -moz-user-select: none;
 }
@@ -222,6 +237,7 @@
      color: #090909;
      text-align: left;
      max-width: calc(100% - 2.5rem);
+     padding-right: 2.5rem;
      overflow: hidden;
      text-overflow: ellipsis;
      white-space: nowrap;
@@ -238,14 +254,20 @@
      border: none;
      background: none;
      outline: none;
-     margin-right: -8px;
+     margin: 0;
+     position: absolute;
+     top: -8px;
+     right: -8px;
 }
 
 .DialogioJS__Confirm .Confirm__Header .Header__CloseButton svg {
      width: 100%;
      height: 100%;
      fill: #090909;
-     transition: 0.2s ease-in-out;
+     transition:
+          fill 0.2s ease,
+          opacity 0.2s ease,
+          transform 0.2s ease;
 }
 
 .DialogioJS__Confirm .Confirm__Header .Header__CloseButton:hover svg {
@@ -327,7 +349,11 @@ a:visited {
      font-family: "Inter", sans-serif;
      font-weight: 500;
      font-size: 1rem;
-     transition: 0.2s ease-in-out;
+     transition:
+          background-color 0.15s ease,
+          border-color 0.15s ease,
+          color 0.15s ease,
+          transform 0.15s ease;
      box-sizing: border-box;
      text-align: center;
      align-items: center;
@@ -368,7 +394,8 @@ a:visited {
      align-items: center;
      justify-content: center;
      background-color: rgba(0, 0, 0, 0.2);
-     backdrop-filter: blur(5px);
+     backdrop-filter: blur(3px);
+     -webkit-backdrop-filter: blur(3px);
      z-index: 9998;
      top: 0;
      left: 0;
@@ -380,7 +407,9 @@ a:visited {
      animation-fill-mode: forwards;
      animation-name: slide-in-top;
      opacity: 1;
-     transition: 0.2s ease-in-out;
+     transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
      transform: translateY(0);
      visibility: visible;
 }
@@ -406,14 +435,16 @@ a:visited {
      border-radius: 1rem;
      overflow: hidden;
      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-     animation-duration: 0.9s;
+     animation-duration: 0.25s;
      animation-fill-mode: forwards;
      animation-name: slide-in-top;
      position: relative;
      box-sizing: border-box;
      z-index: 9999;
      opacity: 1;
-     transition: 0.2s ease-in-out;
+     transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
      transform: translateY(0);
      visibility: visible;
 }
@@ -425,7 +456,9 @@ a:visited {
      flex-direction: row;
      justify-content: space-between;
      box-sizing: border-box;
-     height: 1.5em;
+     min-height: 2.3rem;
+     height: auto;
+     position: relative;
      user-select: none;
      -moz-user-select: none;
 }
@@ -438,6 +471,7 @@ a:visited {
      color: #090909;
      text-align: left;
      max-width: calc(100% - 2.5rem);
+     padding-right: 2.5rem;
      overflow: hidden;
      text-overflow: ellipsis;
      white-space: nowrap;
@@ -454,14 +488,20 @@ a:visited {
      border: none;
      background: none;
      outline: none;
-     margin-right: -8px;
+     margin: 0;
+     position: absolute;
+     top: -8px;
+     right: -8px;
 }
 
 .DialogioJS__Input .Input__Header .Header__CloseButton svg {
      width: 100%;
      height: 100%;
      fill: #090909;
-     transition: 0.2s ease-in-out;
+     transition:
+          fill 0.2s ease,
+          opacity 0.2s ease,
+          transform 0.2s ease;
 }
 
 .DialogioJS__Input .Input__Header .Header__CloseButton:hover svg {
@@ -513,7 +553,9 @@ a:visited {
      border-radius: 0.7rem;
      font-weight: 500;
      outline: none;
-     transition: 0.2s ease-in-out;
+     transition:
+          border-color 0.15s ease,
+          background-color 0.15s ease;
 }
 
 .DialogioJS__Input .Custom__InputBox .CustomInput:hover {
@@ -540,7 +582,11 @@ a:visited {
      font-family: "Inter", sans-serif;
      font-weight: 500;
      font-size: 1rem;
-     transition: 0.2s ease-in-out;
+     transition:
+          border-color 0.15s ease,
+          background-color 0.15s ease,
+          color 0.15s ease,
+          transform 0.15s ease;
      box-sizing: border-box;
      text-align: center;
      align-items: center;

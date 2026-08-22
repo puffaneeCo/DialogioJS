@@ -1,11 +1,5 @@
 /*! Puffanee Dialogio | (c) Puffanee | https://github.com/puffaneeCo/DialogioJS | toasts single v3.0.2 */
 window.DialogioToast = window.DialogioToast || {};
-const defuel = navigator.language || navigator.userLanguage;
-var uel = "en-US";
-if (dialogio_lang[defuel] !== undefined) {
-     uel = dialogio_lang[defuel];
-}
-
 class Dialogio {
      static _Config = {
           ToastIcons: {
@@ -34,15 +28,7 @@ class Dialogio {
      };
 
      static _isValidURL = (str) => {
-          var pattern = new RegExp(
-               "^(https?:\\/\\/)?" +
-                    "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +
-                    "((\\d{1,3}\\.){3}\\d{1,3}))" +
-                    "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" +
-                    "(\\?[;&a-z\\d%_.~+=-]*)?" +
-                    "(\\#[-a-z\\d_]*)?$",
-               "i"
-          );
+          var pattern = new RegExp("^(https?:\\/\\/)?" + "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + "((\\d{1,3}\\.){3}\\d{1,3}))" + "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + "(\\?[;&a-z\\d%_.~+=-]*)?" + "(\\#[-a-z\\d_]*)?$", "i");
           return !!pattern.test(str);
      };
 }
@@ -122,7 +108,6 @@ class DialogioToast extends Dialogio {
 
           setTimeout(() => {
                toast.remove();
-               if (typeof onClose === "function") onClose();
           }, DialogioToast.RemoveTime);
 
           toast.on("click", function () {

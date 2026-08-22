@@ -74,10 +74,7 @@ const dialogio_lang = {
 };
 
 const defuel = navigator.language || navigator.userLanguage;
-var uel = "en-US";
-if (dialogio_lang[defuel] !== undefined) {
-     uel = dialogio_lang[defuel];
-}
+const uel = dialogio_lang[defuel] || dialogio_lang["en-US"];
 
 const DialogioButtons = {
      YesNo: [
@@ -158,15 +155,7 @@ class Dialogio {
      }
 
      static _isValidURL = (str) => {
-          var pattern = new RegExp(
-               "^(https?:\\/\\/)?" +
-                    "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +
-                    "((\\d{1,3}\\.){3}\\d{1,3}))" +
-                    "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" +
-                    "(\\?[;&a-z\\d%_.~+=-]*)?" +
-                    "(\\#[-a-z\\d_]*)?$",
-               "i"
-          );
+          var pattern = new RegExp("^(https?:\\/\\/)?" + "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + "((\\d{1,3}\\.){3}\\d{1,3}))" + "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + "(\\?[;&a-z\\d%_.~+=-]*)?" + "(\\#[-a-z\\d_]*)?$", "i");
           return !!pattern.test(str);
      };
 }
@@ -246,7 +235,6 @@ class DialogioToast extends Dialogio {
 
           setTimeout(() => {
                toast.remove();
-               if (typeof onClose === "function") onClose();
           }, DialogioToast.RemoveTime);
 
           toast.on("click", function () {
@@ -400,7 +388,7 @@ class DialogioConfirm extends Dialogio {
                return 3;
           }
 
-          if (typeof buttons !== "object" || buttons === undefined) {
+          if (!Array.isArray(buttons)) {
                console.warn("[DialogioJS] Dialog buttons is invalid.");
                return 3;
           }
@@ -418,7 +406,7 @@ class DialogioConfirm extends Dialogio {
             <div class="Confirm__Message">${message}</div>
           </div>
           <div class="Confirm__Buttons">
-            ${buttons.map((btn) => `<button type="button" class="Confirm__Button Btn${btn.ty}" data-dcfi="${btn.i}">${btn.t}</button>`).join("")}
+            ${buttons.map((btn, index) => `<button type="button" class="Confirm__Button Btn${btn?.ty || "Pos"}" data-dcfi="${btn?.i ?? index}">${btn?.t ?? btn?.text ?? btn?.label ?? uel.ok}</button>`).join("")}
           </div>
         </div>
       </div>
